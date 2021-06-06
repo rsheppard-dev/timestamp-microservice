@@ -31,11 +31,11 @@ app.get("/api/hello", function (req, res) {
 // translate date
 app.get('/api/:date?', (req, res) => {
   const date = !req.params.date ? new Date() :
-    req.params.date.includes('-') ? new Date(req.params.date) :
+    // req.params.date.includes('-') ? new Date(req.params.date) :
     new Date(parseInt(req.params.date))
   const timezone = moment.tz.guess()
   const unix = date.getTime()
-  const utc = moment(date).tz(timezone).format('ddd, DD MMM YYYY hh:mm:ss z')
+  const utc = moment(date).tz(timezone).format('ddd, DD MMM YYYY HH:mm:ss z')
 
   // check if user entered valid date
   if (!date.getTime()) {
