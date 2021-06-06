@@ -34,7 +34,7 @@ app.get('/api/:date?', (req, res) => {
     req.params.date.includes('-') ? new Date(req.params.date) :
     new Date(parseInt(req.params.date))
   const timezone = moment.tz.guess()
-  const unix = Math.floor(date.getTime() / 1000)
+  const unix = date.getTime()
   const utc = moment(date).tz(timezone).format('ddd, DD MMM YYYY hh:mm:ss z')
 
   // check if user entered valid date
