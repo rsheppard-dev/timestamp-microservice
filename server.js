@@ -29,9 +29,9 @@ app.get("/api/hello", function (req, res) {
 });
 
 // translate date
-app.get('/api/:date', (req, res) => {
-  const date = req.params.date.includes('-') ?
-    new Date(req.params.date) :
+app.get('/api/:date?', (req, res) => {
+  const date = !req.params.date ? new Date() :
+    req.params.date.includes('-') ? new Date(req.params.date) :
     new Date(parseInt(req.params.date))
   const timezone = moment.tz.guess()
   const unix = Math.floor(date.getTime() / 1000)
